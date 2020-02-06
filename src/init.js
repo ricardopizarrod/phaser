@@ -12,7 +12,7 @@ const config = {
         default: "arcade",
         arcade: {
             gravity: {
-                y: 500
+                //y: 500
             }
         }
 
@@ -24,16 +24,27 @@ function preload(){
 }
 function create(){
     this.pajaro= this.physics.add.image(80, 100, "pajaro");
-    this.pajaro.setScale(2);
+/*     this.pajaro.setScale(2);
     this.pajaro.flipX = true;
     this.pajaro.setOrigin(0.5);
     //Propiedades Fisicas
     this.pajaro.setCollideWorldBounds(true);
     this.pajaro.setBounce(0.3);
-    this.pajaro.setVelocity(50,0);
+    this.pajaro.setVelocity(50,0); */
+
+    this.cursor = this.input.keyboard.createCursorKeys();
+    console.log(this.cursor);
+/* 
+   this.right = this.input.keyboard.addKey(Phaser.Input.keyboard.KeyCodes.D);
+   this.left = this.input.keyboard.addKey(Phaser.Input.keyboard.KeyCodes.A); */
 
 }
+//Move el pajaro de izquierda a derecha
 function update(time, delta){
-    //this.pajaro.x++;
+    if(this.cursor.right.isDown) {
+        this.pajaro.x++
+    } else if (this.cursor.left.isDown) {
+        this.pajaro.x--;
+    }
  
 }
